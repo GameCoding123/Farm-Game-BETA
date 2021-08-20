@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+.dirt {
+position:absolute;
+width:200px;
+height:200px;
+background-color:#8B4513;
+
+}
+
+.d1 {
+left:100px;
+top:100px;
+
+}
+
+.d2 {
+left:350px;
+top:100px;
+
+}
+
+.d3 {
+left:600px;
+top:100px;
+
+}
+
+.buy {
+position:absolute;
+}
+
+.b1 {
+left:120px;
+top:190px;
+
+}
+
+.b2 {
+left:380px;
+top:190px;
+}
+
+.b3 {
+left:630px;
+top:190px;
+}
+
+#money {
+position:absolute;
+left:1000px;
+font-size:20px;
+user-select:none;
+}
+
+#corn {
+position:absolute;
+left:115px;
+top:50px;
+visibility:hidden;
+user-select:none;
+}
+
+.cornDetail {
+position:absolute;
+color:#FFD700;
+font-size:26px;
+visibility:hidden;
+}
+
+.cd1 {
+left:100px;
+top:75px;
+user-select:none;
+}
+
+.cd2 {
+left:100px;
+top:115px;
+user-select:none;
+}
+
+.cd3 {
+left:100px;
+top:155px;
+user-select:none;
+}
+
+.cd4 {
+left:100px;
+top:195px;
+user-select:none;
+}
+
+.cd5 {
+left:100px;
+top:235px;
+user-select:none;
+}
+
+#amountCorn {
+position:absolute;
+left:780px;
+font-size:20px;
+user-select:none;
+visibility:hidden;
+}
+
+#amountWheat {
+position:absolute;
+left:545px;
+font-size:20px;
+user-select:none;
+visibility:hidden;
+}
+
+#wheat {
+position:absolute;
+left:360px;
+top:50px;
+visibility:hidden;
+user-select:none;
+}
+
+.wheatDetail {
+position:absolute;
+color:#FF8C00;
+font-size:26px;
+visibility:hidden;
+user-select:none;
+}
+
+.wd1 {
+left:350px;
+top:75px;
+}
+
+.wd2 {
+left:350px;
+top:115px;
+}
+
+.wd3 {
+left:350px;
+top:155px;
+}
+
+.wd4 {
+left:350px;
+top:195px;
+}
+
+.wd5 {
+left:350px;
+top:235px;
+}
+
+
+</style>
+
+</head>
+
+<body style="background-color:green">
+<div class="dirt d1"></div>
+<div class="dirt d2"></div>
+<div class="dirt d3"></div>
+
+
+<p id="money">MONEY: 0</p>
+<p id="corn">CORN PATCH(OWNED)</p>
+<p id="wheat">WHEAT PATCH(OWNED)</p>
+<p id="strip" class="cornDetail cd1">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip1" class="cornDetail cd2">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip2" class="cornDetail cd3">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip3" class="cornDetail cd4">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip4" class="cornDetail cd5">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip5" class="wheatDetail wd1">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip6" class="wheatDetail wd2">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip7" class="wheatDetail wd3">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip8" class="wheatDetail wd4">||||||||||||||||||||||||||||||||||||||</p>
+<p id="strip9" class="wheatDetail wd5">||||||||||||||||||||||||||||||||||||||</p>
+<p id="amountCorn" onclick="sellCorn()">CORN AMOUNT: 0</p>
+<p id="amountWheat" onclick="sellWheat()">WHEAT AMOUNT: 0</p>
+
+<button id="bu1" class="buy b1" onclick="Buy1()">BUY CORN PATCH $10</button>
+<button id="bu2" class="buy b2" onclick="Buy2()">BUY WHEAT PATCH</button>
+<button class="buy b3">BUY CARROT PATCH</button>
+
+<script>
+
+var money = document.getElementById("money");
+var button1 = document.getElementById("bu1");
+var button2 = document.getElementById("bu2");
+var corn = document.getElementById("corn");
+var wheat = document.getElementById("wheat");
+var amountCorn = document.getElementById("amountCorn");
+var amountWheat = document.getElementById("amountWheat");
+var strip = document.getElementById("strip");
+var strip1 = document.getElementById("strip1");
+var strip2 = document.getElementById("strip2");
+var strip3 = document.getElementById("strip3");
+var strip4 = document.getElementById("strip4");
+var strip5 = document.getElementById("strip5");
+var strip6 = document.getElementById("strip6");
+var strip7 = document.getElementById("strip7");
+var strip8 = document.getElementById("strip8");
+var strip9 = document.getElementById("strip9");
+var coin = 0;
+var Corn = 0;
+var cornAmount = 50;
+var Wheat = 0;
+var wheatAmount = 150;
+Money();
+speak();
+
+
+function Money() {
+coin += 40;
+money.innerHTML = 'MONEY: ' + coin;
+}
+
+function Buy1() {
+if(coin >= 10) {
+coin -= 10;
+bu1.style.visibility = 'hidden';
+corn.style.visibility = 'visible';
+amountCorn.style.visibility = 'visible';
+strip.style.visibility = 'visible';
+strip1.style.visibility = 'visible';
+strip2.style.visibility = 'visible';
+strip3.style.visibility = 'visible';
+strip4.style.visibility = 'visible';
+money.innerHTML = 'MONEY: ' + coin;
+alert('NOW IF YOU LOOK NEXT TO THE MONEY ICON ON THE LEFT IT SAYS CORN AND IF YOU HAVE 50 CORN YOU CAN GET 1 DOLLAR BY PRESSING THE CORN ICON');
+
+
+ setInterval(function(){
+Corn += 5;
+amountCorn.innerHTML = 'CORN AMOUNT: ' + Corn;
+},1000 );
+
+
+}
+
+}
+
+function speak() {
+alert('WELCOME TO FARM');
+alert('HERE IS 10 DOLLARS NOW GO BUY A CORN PATCH');
+console.log('DONT YOU DARE YOU CHEAT!!!!');
+
+}
+
+function sellCorn() {
+if(Corn >= 50) {
+coin += 1;
+money.innerHTML = 'MONEY: ' + coin;
+Corn -= 50;
+amountCorn.innerHTML = 'CORN AMOUNT: ' + Corn;
+} else {
+cornAmount -= Corn;
+alert('you do not have enough corn you need 50, you are ' + cornAmount + ' corn away');
+cornAmount += Corn;
+} 
+
+}
+
+function Buy2() {
+if(coin => 30) {
+coin -= 30;
+money.innerHTML = 'MONEY: ' + coin;
+button2.style.visibility = 'hidden';
+amountWheat.style.visibility = 'visible';
+wheat.style.visibility = 'visible';
+strip5.style.visibility = 'visible';
+strip6.style.visibility = 'visible';
+strip7.style.visibility = 'visible';
+strip8.style.visibility = 'visible';
+strip9.style.visibility = 'visible';
+
+setInterval(function(){
+Wheat += 5;
+amountWheat.innerHTML = 'WHEAT AMOUNT: ' + Wheat;
+},1000)
+
+}
+
+}
+
+function sellWheat() {
+if(Wheat >= 150) {
+coin += 5;
+money.innerHTML = 'MONEY: ' + coin;
+Wheat -= 150;
+amountWheat.innerHTML = 'WHEAT AMOUNT: ' + Wheat;
+
+} else {
+wheatAmount -= Wheat;
+alert('you do not have enough wheat you need 150, you are ' + wheatAmount + ' wheat away');
+wheatAmount += Wheat;
+}
+
+}
+
+
+</script>
+
+ </body>
+
+
+</html>
